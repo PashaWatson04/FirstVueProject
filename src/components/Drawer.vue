@@ -50,7 +50,7 @@ const buttonDisabled = computed(() => isCreating.value || cartIsEmpty.value)
       <infoBlock
         v-if="orderId"
         title="Заказ оформлен!"
-        :description="`Ваш заказ #${orderId} скоро мы позвоним для уточнения заказа`"
+        :description="`Ваш заказ #${orderId} заполните форму для подтверждения заказа, мы позвоним для уточнения заказа`"
       />
     </div>
     <div v-else>
@@ -66,13 +66,15 @@ const buttonDisabled = computed(() => isCreating.value || cartIsEmpty.value)
           <div class="flex-1 border-b border-dashed"></div>
           <b>{{ vatPrice }} ₽</b>
         </div>
-        <button
-          :disabled="buttonDisabled"
-          @click="createOrder"
-          class="mt-4 bg-lime-500 w-full rounded-xl py-3 disabled:bg-slate-400 text-white transition hover:bg-lime-600 active:bg-lime-700"
-        >
-          Оформить заказ
-        </button>
+        <router-link to="/formQt">
+          <button
+            :disabled="buttonDisabled"
+            @click="createOrder"
+            class="mt-4 bg-lime-500 w-full rounded-xl py-3 disabled:bg-slate-400 text-white transition hover:bg-lime-600 active:bg-lime-700"
+          >
+            Оформить заказ
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
